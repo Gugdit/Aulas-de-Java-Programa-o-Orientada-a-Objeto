@@ -15,20 +15,18 @@ public class Aluno {
 
     public void atualizaNota (double alteracaoNota){
         nota += alteracaoNota;
-        System.out.println("A nota agora é: "+ nota);
+        System.out.println("A nota do aluno após alteração é: "+ nota);
     }
 
-    public void verificarAprovacao () {
+    public boolean verificarAprovacao () {
         boolean aprovacao;
         if (nota >= 6.0 ){
             aprovacao = true;
-            System.out.println(aprovacao);
         }
-        if (nota < 6.0){
+        else {
             aprovacao = false;
-            System.out.println(aprovacao);
         }
-
+        return aprovacao;
     }
 
     @Override
