@@ -6,31 +6,31 @@ public class principal {
 
         aluno1.exibirInformacoes();
         aluno1.atualizaNota(1);
-        if (aluno1.verificarAprovacao() == true){
+        if (aluno1.verificarAprovacao()){
             System.out.println("O aluno está aprovado");
         }else {
             System.out.println("O aluno está reprovado");
         }
 
-        System.out.println("");
+        System.out.println();
 
         Aluno aluno2 = new Aluno("Maria",15,10.0);
 
         aluno2.exibirInformacoes();
         aluno2.atualizaNota(0);
-        if (aluno2.verificarAprovacao() == true){
+        if (aluno2.verificarAprovacao()){
             System.out.println("O aluno está aprovado");
         }else {
             System.out.println("O aluno está reprovado");
         }
 
-        System.out.println("");
+        System.out.println();
 
         Aluno aluno3 = new Aluno("Pedro",17,4.5);
 
         aluno3.exibirInformacoes();
         aluno3.atualizaNota(0);
-        if (aluno3.verificarAprovacao() == true){
+        if (aluno3.verificarAprovacao()){
             System.out.println("O aluno está aprovado");
         }else {
             System.out.println("O aluno está reprovado");
