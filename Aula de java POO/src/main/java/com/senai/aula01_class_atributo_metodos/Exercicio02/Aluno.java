@@ -20,7 +20,12 @@ public class Aluno {
 
     public boolean verificarAprovacao () {
         boolean aprovacao;
-        aprovacao = nota >= 6.0;
+        if (nota >= 6.0 ){
+            aprovacao = true;
+        }
+        else {
+            aprovacao = false;
+        }
         return aprovacao;
     }
 

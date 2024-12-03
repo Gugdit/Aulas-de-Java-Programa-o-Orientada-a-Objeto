@@ -1,8 +1,11 @@
 package com.senai.aula01_class_atributo_metodos.Exercicio01;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Produto {
+    Scanner scanner = new Scanner(System.in);
+
     String nome;
     double preco;
     int quantidade;
