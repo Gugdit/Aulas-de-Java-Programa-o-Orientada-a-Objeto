@@ -1,4 +1,4 @@
-package com.senai.aula01_class_atributo_metodos.Exercicio01;
+package com.senai.aula01_class_atributo_metodos.Exercicios.Exercicio01;
 
 import java.util.Objects;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package com.senai.aula01_class_atributo_metodos.Exercicio02;
+package com.senai.aula01_class_atributo_metodos.Exercicios.Exercicio02;
 
 public class principal {
     public static void main(String[] args) {
