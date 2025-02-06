@@ -6,18 +6,28 @@ public class Funcionario {
     private String cargo;
     private String[] cargos = {"Gerente", "Analista", "Programador"};
 
-    public Funcionario(String nome, double salario, int idCargo) {
+    public Funcionario(String nome, double salario,int idCargo) {
         this.nome = nome;
-        this.salario = salario;
-        this.cargo = cargos[idCargo-1];
+        if (salario<1320) {
+            this.salario = 1320;
+            System.out.println("O salário não pode ser menor ou igual a um salário minímo!!!");
+        }else{
+            this.salario=salario;
+        }
+        this.cargo = cargos[idCargo];
     }
-
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public Boolean setNome(String nome) {
+        if (nome ==null || nome.isEmpty()){
+            System.out.println("O nome está vazio!!!!");
+            return true;
+        }else {
+            this.nome = nome;
+            return false;
+        }
     }
 
     public double getSalario() {
@@ -28,7 +38,7 @@ public class Funcionario {
         if (salario > 1320){
             this.salario = salario;
         } else{
-            System.out.println("O salário não pode ser menor ou igual a um salário minímo.");
+            System.out.println("O salário não pode ser menor ou igual a um salário minímo!!!");
         }
 
         return salario;
@@ -38,8 +48,15 @@ public class Funcionario {
         return cargo;
     }
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
+    public Boolean setCargo(int idCargo){
+        if (idCargo > 0 && idCargo < 3){
+            this.cargo = cargos[idCargo-1];
+            return false;
+        }else {
+            System.out.println("Escolha um cargo válido!!!");
+            return true;
+        }
+
     }
 
     @Override

@@ -1,11 +1,13 @@
 package com.senai.aula03_encapsulamento.exercicios.Exercicio2;
 
+import java.util.Objects;
+
 public class Usuario {
     private String nome;
-    private int cpf;
+    private String cpf;
     private String dataDeNascimento;
 
-    public Usuario(String nome, int cpf, String dataDeNascimento) {
+    public Usuario(String nome, String cpf, String dataDeNascimento) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataDeNascimento = dataDeNascimento;
@@ -19,11 +21,11 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -37,10 +39,19 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "nome='" + nome + '\'' +
-                ", cpf=" + cpf +
-                ", dataDeNascimento='" + dataDeNascimento + '\'' +
-                '}';
+        return String.format("Nome: %s | CPF: %s | Data de Nascimento: %s", nome, cpf, dataDeNascimento);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(nome, usuario.nome) && Objects.equals(cpf, usuario.cpf) && Objects.equals(dataDeNascimento, usuario.dataDeNascimento);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, cpf, dataDeNascimento);
     }
 }

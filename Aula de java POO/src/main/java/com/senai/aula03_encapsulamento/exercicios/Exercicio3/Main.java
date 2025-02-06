@@ -6,20 +6,25 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Funcionario funcionario1 = new Funcionario(
-                "Leandro",
+                "Pedrinho",
                 4000,
                 1
         );
         System.out.println(funcionario1);
-
-        funcionario1.visualizarSalario();
-        System.out.print("Digite o novo salário: ");
-        funcionario1.alterarSalario(scanner.nextDouble());
-        System.out.println("Seu novo salário: "+ funcionario1.getSalario());
-
-        System.out.print("Digite um aumento percentual para o salário: ");
-        funcionario1.alterarSalarioPercentual(scanner.nextDouble());
-        System.out.print+("Seu novo salário: "+ funcionario1.getSalario());
-
+        System.out.println("Preencha as informações do funcionário:");
+        System.out.print("Nome: ");
+        while (funcionario1.setNome(scanner.nextLine())){
+            System.out.println("Digite um nome válido!!!");
+        }
+        System.out.print("Cargo: ");
+        while (funcionario1.setCargo(scanner.nextInt())){
+            System.out.println("Digite um cargo válido!!!");
+        }
+        System.out.println("Salário:");
+        while (funcionario1.setSalario(scanner.nextDouble())){
+            System.out.println("Digite um salário válido!!!");
+        }
     }
-}
+        }
+
+

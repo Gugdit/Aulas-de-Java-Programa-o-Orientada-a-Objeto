@@ -82,22 +82,16 @@ public class ContaBancaria {
         return saldo;
     }
 
-    public double transferencia(double valor, ContaBancaria contaDestino){
+
+    @Override
+    public String toString() {
+        return String.format("Número da Conta: %s | Usuário: (%s) | Saldo: %s | Banco: %s | Tipo: %s", numeroDaConta,usuario,saldo,banco,tipo);
+    }
+}
+
+/*public double transferencia(double valor, ContaBancaria contaDestino){
         System.out.println("");
         System.out.println("Saldo da conta do recebedor: "+ contaDestino.saldo);
         contaDestino.depositar(valor);
         return this.sacar(valor);
-    }
-
-    @Override
-    public String toString() {
-        return "ContaBancaria{" +
-                "numeroDaConta=" + numeroDaConta +
-                ", usuario=" + usuario +
-                ", saldo=" + saldo +
-                ", banco='" + banco + '\'' +
-                ", tipo='" + tipo + '\'' +
-                '}';
-    }
-}
-
+    }*/

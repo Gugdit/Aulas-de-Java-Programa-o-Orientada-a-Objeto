@@ -1,5 +1,7 @@
 package com.senai.aula03_encapsulamento.exercicios.Exercicio1;
 
+import java.util.Objects;
+
 public class Produto {
     private String nome;
     private double preco;
@@ -31,9 +33,7 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "Produto{" +
-                "nome='" + nome + '\'' +
-                ", preco=" + preco +
-                '}';
+        return String.format("%s | Preço(R$): %s ", nome, preco );
     }
+
 }
