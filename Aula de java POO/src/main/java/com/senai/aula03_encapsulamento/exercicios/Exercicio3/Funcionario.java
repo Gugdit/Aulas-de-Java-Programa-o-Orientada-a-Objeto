@@ -14,7 +14,12 @@ public class Funcionario {
         }else{
             this.salario=salario;
         }
-        this.cargo = cargos[idCargo];
+        if (idCargo > 3 && idCargo <= 0) {
+            this.cargo = cargos[3];
+            System.out.println("Digite um número entre os listados!!!!");
+        } else{
+            this.cargo = cargos[idCargo];
+        }
     }
     public String getNome() {
         return nome;
@@ -34,14 +39,14 @@ public class Funcionario {
         return salario;
     }
 
-    public double setSalario(double salario) {
+    public Boolean setSalario(double salario) {
         if (salario > 1320){
             this.salario = salario;
+            return false;
         } else{
             System.out.println("O salário não pode ser menor ou igual a um salário minímo!!!");
+            return true;
         }
-
-        return salario;
     }
 
     public String getCargo() {
@@ -50,7 +55,7 @@ public class Funcionario {
 
     public Boolean setCargo(int idCargo){
         if (idCargo > 0 && idCargo < 3){
-            this.cargo = cargos[idCargo-1];
+            this.cargo = cargos[idCargo];
             return false;
         }else {
             System.out.println("Escolha um cargo válido!!!");
@@ -61,14 +66,14 @@ public class Funcionario {
 
     @Override
     public String toString() {
-        return String.format("Nome: %s | Cargo: %s | Salário: %s ",nome, cargo,salario);
+        return String.format("Nome: %s | Cargo: %s | Salário: R$%s ",nome, cargo,salario);
     }
 
     public void visualizarSalario(){
         System.out.println("Salário do funcionário R$: " + this.getSalario());
     }
 
-    public double alterarSalario(double novoValor){
+    public Boolean alterarSalario(double novoValor){
         return this.setSalario(novoValor);
     }
 

@@ -12,12 +12,18 @@ public class Main {
                 --- Menu de Produtos ---
                 1. Cadastrar Produto
                 2. Listar Produtos
-                3. Sair
+                3. Deletar Produto
+                4. Sair
                 ---------------------------
                 """;
         do {
             System.out.println(menu);
             System.out.print("Escolha uma opção: ");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Opção inválida! Por favor, digite um número.");
+                scanner.nextLine();
+                System.out.print("Escolha uma opção: ");
+            }
             opcao = scanner.nextInt();
             scanner.nextLine();
             switch (opcao) {
@@ -29,12 +35,20 @@ public class Main {
                     System.out.println();
                     break;
                 case 3:
+                    deletarProduto();
+                    System.out.println();
+                    break;
+                case 4:
                     System.out.println("Fim Programa!!!");
                     scanner.close();
                     break;
+                default:
+                    if (opcao > 4){
+                        System.out.println("Opção não é válida!!!!");
+                    }
             }
 
-        } while (opcao != 3);
+        } while (opcao != 4);
     }
 
         public static void exibirProdutos(){
@@ -47,9 +61,25 @@ public class Main {
             System.out.print("Digite o nome do produto: ");
             String nomeProduto = scanner.nextLine();
             System.out.print("Digite o preco: ");
+            while (!scanner.hasNextDouble()) {
+                System.out.println("Opção inválida! Por favor, digite um número.");
+                scanner.nextLine();
+                System.out.print("Digite o preço: ");
+            }
             double precoProduto = scanner.nextDouble();
             produtosList.add(new Produto(nomeProduto, precoProduto));
             System.out.println("Produto cadastrado com sucesso!!");
+        }
+        public static void deletarProduto(){
+            System.out.print("Digite um nome para ser removido: ");
+            exibirProdutos();
+            String produtoRemover = scanner.nextLine();
+            for (int posicao = 0; posicao < produtosList.size(); posicao++) {
+                if (produtosList.get(posicao).getNome().equals(produtoRemover)) {
+                    produtosList.remove(posicao);
+                    System.out.println("Produto removido com sucesso!!");
+                }
+            }
         }
 
     }

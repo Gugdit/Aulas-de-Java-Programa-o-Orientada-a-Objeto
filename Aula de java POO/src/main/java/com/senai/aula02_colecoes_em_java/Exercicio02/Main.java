@@ -21,6 +21,11 @@ public class Main {
         do {
             System.out.println(menu);
             System.out.print("Escolha uma opção: ");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Opção inválida! Por favor, digite um número.");
+                scanner.nextLine();
+                System.out.print("Escolha uma opção: ");
+            }
             opcao = scanner.nextInt();
             scanner.nextLine();
             switch (opcao) {
@@ -76,6 +81,10 @@ public class Main {
                     System.out.println("Fim Programa");
                     scanner.close();
                     break;
+                default:
+                    if (opcao > 6){
+                        System.out.println("Opção não é válida!!!!");
+                    }
             }
 
         }while (opcao != 6);

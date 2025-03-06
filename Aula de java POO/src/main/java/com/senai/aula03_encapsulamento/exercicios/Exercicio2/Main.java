@@ -13,13 +13,19 @@ public class Main {
                 1. Cadastrar Usuário
                 2. Sacar
                 3. Depositar
-                4. Listar usuários
-                5. Sair
+                4. Deletar usuários
+                5. Listar usuários
+                6. Sair
                 ---------------------------
                 """;
         do {
             System.out.println(menu);
             System.out.print("Escolha uma opção: ");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Opção inválida! Por favor, digite um número.");
+                scanner.nextLine();
+                System.out.print("Escolha uma opção: ");
+            }
             opcao = scanner.nextInt();
             scanner.nextLine();
             switch (opcao) {
@@ -36,20 +42,33 @@ public class Main {
                     System.out.println();
                     break;
                 case 4:
-                    exibirUsuarios();
+                    deletarUsuarios();
                     System.out.println();
                     break;
                 case 5:
+                    exibirUsuarios();
+                    System.out.println();
+                    break;
+                case 6:
                     System.out.println("Fim do programa!!");
                     break;
+                default:
+                    if (opcao > 6){
+                        System.out.println("Opção não é válida!!!!");
+                    }
             }
 
-        }while (opcao != 5);
+        }while (opcao != 6);
 
 
     }
     public static void cadastrarUsuario(){
         System.out.print("O número da conta do usuário: ");
+        while (!scanner.hasNextInt()) {
+            System.out.println("Opção inválida! Por favor, digite um número.");
+            scanner.nextLine();
+            System.out.print("O número da conta do usuário: ");
+        }
         int numeroDaConta = scanner.nextInt();
         System.out.print("Nome do usuário: ");
         scanner.nextLine();
@@ -66,17 +85,27 @@ public class Main {
         System.out.println("Usuário cadastrado com sucesso!!!");
     }
     public static void exibirUsuarios(){
-        System.out.println("Lista de Produtos:");
+        System.out.println("Lista de Usuários:");
         for (ContaBancaria contaBancaria : contasBancariasList){
             System.out.println((contasBancariasList.indexOf(contaBancaria)+1)+" - "+contaBancaria);
         }
     }
     public static void saqueUsuarios(){
         System.out.print("Digite o número da Conta Bancária que deseja sacar: ");
+        while (!scanner.hasNextInt()) {
+            System.out.println("Opção inválida! Por favor, digite um número.");
+            scanner.nextLine();
+            System.out.print("Digite o número da Conta Bancária que deseja sacar: ");
+        }
         int contabancariaOpcao = scanner.nextInt();
         for (ContaBancaria contaBancaria : contasBancariasList) {
             if (contaBancaria.getNumeroDaConta() == contabancariaOpcao) {
                 System.out.print("Quantidade que deseja sacar: ");
+                while (!scanner.hasNextDouble()) {
+                    System.out.println("Opção inválida! Por favor, digite um número.");
+                    scanner.nextLine();
+                    System.out.print("Quantidade que deseja sacar: ");
+                }
                 contaBancaria.sacar(scanner.nextDouble());
                 System.out.println("Saque realizado com sucesso!!!");
             }
@@ -84,12 +113,38 @@ public class Main {
     }
     public static void depositoUsuarios(){
         System.out.print("Digite o número da Conta Bancária que deseja depositar: ");
+        while (!scanner.hasNextInt()) {
+            System.out.println("Opção inválida! Por favor, digite um número.");
+            scanner.nextLine();
+            System.out.print("Digite o número da Conta Bancária que deseja depositar: ");
+        }
         int contabancariaOpcao = scanner.nextInt();
         for (ContaBancaria contaBancaria : contasBancariasList) {
             if (contaBancaria.getNumeroDaConta() == contabancariaOpcao) {
                 System.out.print("Quantidade que deseja depositar: ");
+                while (!scanner.hasNextDouble()) {
+                    System.out.println("Opção inválida! Por favor, digite um número.");
+                    scanner.nextLine();
+                    System.out.print("Quantidade que deseja depositar: ");
+                }
                 contaBancaria.depositar(scanner.nextDouble());
                 System.out.println("Depósito realizado com sucesso!!!");
+            }
+        }
+    }
+    public static void deletarUsuarios(){
+        System.out.print("Digite o número da Conta Bancária que deseja deletar: ");
+        exibirUsuarios();
+        while (!scanner.hasNextInt()) {
+            System.out.println("Opção inválida! Por favor, digite um número.");
+            scanner.nextLine();
+            System.out.print("Digite o número da Conta Bancária que deseja deletar: ");
+        }
+        int usuarioDeletar = scanner.nextInt();
+        for (int posicao = 0; posicao < contasBancariasList.size(); posicao++) {
+            if (contasBancariasList.get(posicao).getNumeroDaConta() == usuarioDeletar) {
+                contasBancariasList.remove(posicao);
+                System.out.println("Usuário  removido com sucesso!!");
             }
         }
     }
