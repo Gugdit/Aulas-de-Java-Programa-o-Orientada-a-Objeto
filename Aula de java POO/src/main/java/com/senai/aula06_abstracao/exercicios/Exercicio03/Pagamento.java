@@ -45,12 +45,12 @@ public abstract class Pagamento {
         this.idRecebedor = idRecebedor;
     }
 
-    abstract void autenticacaoUsuario();
-    abstract void validacaoAntiFraude();
-    abstract void registroDeTransacao();
+    protected abstract void autenticacaoUsuario();
+    protected abstract void validacaoAntiFraude();
+    protected abstract void registroDeTransacao();
 
     public void validarTransacao(){
-        System.out.println("Transação do devedor: "+nomeDevedor+" - "+idDevedor+ " com o recebedor: "+nomeRecebedor+" - "+idRecebedor+" é válida");
+        System.out.println("Transação do Devedor: "+nomeDevedor+" -  Id: "+idDevedor+ " com o Recebedor: "+nomeRecebedor+" - Id: "+idRecebedor+" é válida");
     }
     public void registroDeLogs(){
         System.out.println("Transação entre devedor e recebedor: "+nomeDevedor+" e "+nomeRecebedor+" foi realizada com sucesso!!!");

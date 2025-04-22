@@ -22,7 +22,6 @@ public interface CheckIn {
             System.out.println("Peso da bagagem não é adequado!!!");
             return pesobagagem;
         }
-
     }
 
     private boolean validarPeso(int pesoBagagem){
